@@ -1,0 +1,32 @@
+.home_container{
+  width: 40%; 
+  height: 400px; 
+  display: flex; 
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  align-items: center;
+  border-radius: .80em;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.34);
+  position: relative;
+top: 50%;
+transform: translateY(25%); 
+}
+
+.home_card{    
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+.home_input{
+    padding: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.home_logo{
+    margin-top: 2em;
+}
