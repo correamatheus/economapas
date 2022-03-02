@@ -1,0 +1,25 @@
+.btn_questoes{
+    margin-top: 4em !important;
+    margin: 0 auto;    
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.btn{
+    margin-bottom: 2em;
+    padding: 1em;
+    border: 2px solid #F7CB3E;
+    border-radius: .80em;
+    background-color: #3D3D3D;
+    color: #F7CB3E;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.btn:hover{
+    background-color: #F7CB3E;
+    color: #3D3D3D;
+    font-weight: 700;
+}

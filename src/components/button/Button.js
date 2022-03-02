@@ -1,7 +1,7 @@
 import styles from './Button.module.css'
 
-function Button(){
-    return  <button className={styles.button_style}>Começar a jogar</button>
+function Button({text}){
+    return  <button className={styles.button_style}>{text}</button>
 }
 
 export default Button
