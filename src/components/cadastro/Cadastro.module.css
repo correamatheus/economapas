@@ -1,12 +1,33 @@
-.home_input{
+.cadastro_input{
     padding: 1em;
-    margin-top: 2em;
+    margin-top: 1em;
     margin-bottom: 2em;
 }
 
-.home_card{    
+.cadastro_card{    
     display: flex;
     flex-direction: column;
     
-    
+}
+
+.button_style{
+    padding: 1em;
+    border: 2px solid #F7CB3E;
+    border-radius: .80em;
+    background-color: #3D3D3D;
+    color: #F7CB3E;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 2em;
+}
+
+.button_style:hover{
+    background-color: #F7CB3E;
+    color: #3D3D3D;
+    font-weight: 700;
+}
+
+.info{
+    font-size: .70rem;
+    color: red;
 }

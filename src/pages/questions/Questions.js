@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import styles from "./Questions.module.css";
 import Loading from "../../components/loading/Loading";
 
-function Questions({name}) {
+function Questions({name, selecaoDificuldade}) {
   const [questions, setQuestions] = useState([]);
   const [gabarito, setGabarito] = useState([]);
   const [questaoAtual, setQuestaoAtual] = useState(0);
   const [mostrarPontuacao, setMostrarPontuacao] = useState(false);
   const [pontuacao, setPontuacao] = useState(0);
   const [removeLoading, setRemoveLoading] = useState(false);
-
   
+
+  const novoJogo = () => {
+    window.location.reload()
+  }
 
   const pegarGabarito = () => {
     for (const [key, value] of Object.entries(
@@ -49,8 +52,8 @@ function Questions({name}) {
     pegarGabarito();
   };
 
-  useEffect(() => {
-    fetch("https://quizapi.io/api/v1/questions?apiKey=x5yYMkHgQ0xhz7Q7RD1CfTQESV5gXkBwlfcuNFed&limit=10", {
+  useEffect(() => {    
+    fetch(`https://quizapi.io/api/v1/questions?apiKey=x5yYMkHgQ0xhz7Q7RD1CfTQESV5gXkBwlfcuNFed&limit=10&difficulty=${selecaoDificuldade}`, {
       method: "GET",
       headers: {
         // "x-api-key": "x5yYMkHgQ0xhz7Q7RD1CfTQESV5gXkBwlfcuNFed",
@@ -68,9 +71,9 @@ function Questions({name}) {
   return (
     <div>
       {mostrarPontuacao ? (
-        <div>
+        <div className={styles.pontuacao}>
           Você acertou {pontuacao} de {questions.length}
-          <div>
+          <div className={styles.gabarito}>
             Gabarito:{" "}
             {gabarito.map((item, index) => (
               <ul>
@@ -80,17 +83,19 @@ function Questions({name}) {
               </ul>
             ))}
           </div>
+          <button className={styles.btn} onClick={novoJogo}>Começar novo jogo!</button>
         </div>
+        
       ) : (
         <div>
           {questions.length > 0 ? (
             <div>
-              <div>
+              <div className={styles.informacao}>
                 <h1>{name}</h1>
                 <span>Questão: {questaoAtual + 1}</span>/{questions.length}
                 
               </div>
-              <div>{questions[questaoAtual].question}</div>
+              <div className={styles.pergunta}>{questions[questaoAtual].question}</div>
               <div className={styles.btn_questoes}>
                 {Object.keys(questions[questaoAtual].answers).map((item) => (
                   <button

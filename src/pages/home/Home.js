@@ -1,5 +1,4 @@
 import styles from "./Home.module.css";
-import Button from "../../components/button/Button";
 import LogoEconomaps from "../../assets/economapas-logo.svg";
 import Cadastro from "../../components/cadastro/Cadastro";
 import { useState } from "react";
@@ -8,18 +7,21 @@ import Questions from "../questions/Questions";
 function Home() {
   const [name, setName] = useState();
   const [mostrarQuestoes, setMostrarQuestoes] = useState(false);
+  const [selecaoDificuldade, setSelecaoDificuldade] = useState('')
 
-  const handleSubmit = ({ name }) => {
+  const handleSubmit = ({ name, selecaoDificuldade }) => {
     console.log("dados home", { name });
     setName(name);
     setMostrarQuestoes(true);
+    setSelecaoDificuldade(selecaoDificuldade);
     console.log("mostrar questoes home", mostrarQuestoes);
+    console.log("mostrar difculdade home", selecaoDificuldade);
   };
 
   return (
     <div>
       {mostrarQuestoes ? (
-        <Questions name={name} />
+        <Questions name={name} selecaoDificuldade={selecaoDificuldade} />
       ) : (
         <section className={styles.home_container}>
           <img
