@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import styles from "./Questions.module.css";
 import Loading from "../../components/loading/Loading";
 
-
-function Questions() {
+function Questions({name}) {
   const [questions, setQuestions] = useState([]);
-  const [gabarito, setGabarito] = useState([])
+  const [gabarito, setGabarito] = useState([]);
   const [questaoAtual, setQuestaoAtual] = useState(0);
   const [mostrarPontuacao, setMostrarPontuacao] = useState(false);
   const [pontuacao, setPontuacao] = useState(0);
@@ -13,25 +12,20 @@ function Questions() {
 
   
 
-
   const pegarGabarito = () => {
-    
     for (const [key, value] of Object.entries(
       questions[questaoAtual].correct_answers
     )) {
       if (value === "true") {
-        // gabarito.push(key.substring(7, 8)) ;      
-       let novaString = key.substring(7, 8) ; 
-       setGabarito(arr => [...arr, novaString])
+        // gabarito.push(key.substring(7, 8)) ;
+        let novaString = key.substring(7, 8);
+        setGabarito((arr) => [...arr, novaString]);
       }
     }
-    
-  }
+  };
 
   const irProximaQuestao = (questaoCorreta) => {
     let respostaCorreta = "";
-
-    
 
     for (const [key, value] of Object.entries(
       questions[questaoAtual].correct_answers
@@ -41,7 +35,7 @@ function Questions() {
       }
     }
 
-    if(questaoCorreta === respostaCorreta){
+    if (questaoCorreta === respostaCorreta) {
       setPontuacao(pontuacao + 1);
     }
 
@@ -53,14 +47,13 @@ function Questions() {
     }
 
     pegarGabarito();
-
   };
 
   useEffect(() => {
-    fetch("https://quizapi.io/api/v1/questions", {
+    fetch("https://quizapi.io/api/v1/questions?apiKey=x5yYMkHgQ0xhz7Q7RD1CfTQESV5gXkBwlfcuNFed&limit=10", {
       method: "GET",
       headers: {
-        "x-api-key": "x5yYMkHgQ0xhz7Q7RD1CfTQESV5gXkBwlfcuNFed",
+        // "x-api-key": "x5yYMkHgQ0xhz7Q7RD1CfTQESV5gXkBwlfcuNFed",
         "Content-Type": "application/json",
       },
     })
@@ -78,21 +71,23 @@ function Questions() {
         <div>
           Você acertou {pontuacao} de {questions.length}
           <div>
-          Gabarito: {gabarito.map((item, index) => (
-            <ul>
-              <li>{index + 1} - {item}</li>
-            </ul>
-          ))}
+            Gabarito:{" "}
+            {gabarito.map((item, index) => (
+              <ul>
+                <li>
+                  {index + 1} - {item}
+                </li>
+              </ul>
+            ))}
           </div>
-         
         </div>
       ) : (
         <div>
           {questions.length > 0 ? (
             <div>
               <div>
-                
-                <span>Questão: {questaoAtual + 1}</span>/{questions.length}           
+                <h1>{name}</h1>
+                <span>Questão: {questaoAtual + 1}</span>/{questions.length}
                 
               </div>
               <div>{questions[questaoAtual].question}</div>
@@ -104,8 +99,7 @@ function Questions() {
                   >
                     {questions[questaoAtual].answers[item]}
                   </button>
-                ))}
-                {console.log(questions)}
+                ))}                
               </div>
             </div>
           ) : (

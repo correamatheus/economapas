@@ -1,0 +1,12 @@
+.home_input{
+    padding: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.home_card{    
+    display: flex;
+    flex-direction: column;
+    
+    
+}
