@@ -10,8 +10,8 @@
   border-radius: .80em;
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.34);
   position: relative;
-top: 50%;
-transform: translateY(25%); 
+    top: 50%;
+    transform: translateY(25%); 
 }
 
 .home_card{    
@@ -29,4 +29,12 @@ transform: translateY(25%);
 
 .home_logo{
     margin-top: 2em;
+}
+
+@media only screen and (max-width: 768px) {
+    .home_container{
+        width: 100%;
+
+    }
+
 }

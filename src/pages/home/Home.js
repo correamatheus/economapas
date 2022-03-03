@@ -19,7 +19,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className={styles.princiapal}>
       {mostrarQuestoes ? (
         <Questions name={name} selecaoDificuldade={selecaoDificuldade} />
       ) : (
